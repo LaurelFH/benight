@@ -19,7 +19,7 @@ var yelpqueryURL = "https://api.yelp.com/v3/businesses/search"
 //
 //
 //calling the search API from YELP       
-    
+    //ajax call 
     $.ajax({
         url: (yelpqueryURL + searchQuery + yelpapiKey),
         method: "GET"
@@ -27,19 +27,9 @@ var yelpqueryURL = "https://api.yelp.com/v3/businesses/search"
 	    //see what matches up 
 	    console.log(response);
 //
-//
+//FIREBASE 
 //
 //RESOURCES
-//
-//firebase
-////
-//ajax call 
-//
-//Key for Facebook events 
-//
-//
-//
-//
 //
 //Key Yelp 
 //
