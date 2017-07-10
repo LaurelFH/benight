@@ -13,47 +13,12 @@
 
 
 // GOOGLE MAPS GEOCODE-- 
+//AIzaSyDmZyph_0mPWdXM8yXSLT669Z_G3lttS_U
 
 
-//test code function 
-// function loadMap() {
-//  var mapOptions = {
-//  	//specificies the location where we want to center the map
-//  	center:new google.maps.LatLng(17.240498, 82.287598),
-// 	 //specifies the zoom level of the map 
-// 	 zoom:9,
-// 	 //specifies the type of map -- roadmap, satellite (photographic), hybrid(phto plus roads/city names). terrain (Mts, rivers etc.)
-//  	mapTypeId: google.maps.MapTypeId.ROADMAP
-//  };
-// //convert to Jquery?
-// var map =new google.maps.Map(document.getElementById("mapspace"), 
-// 	mapOptions);
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('mapspace'), {
-    zoom: 8,
-    center: {lat: -34.397, lng: 150.644}
-  });
-  var geocoder = new google.maps.Geocoder();
 
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeAddress(geocoder, map);
-  });
-}
 
-function geocodeAddress(geocoder, resultsMap) {
-  var address = document.getElementById('address').value;
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === 'OK') {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -93,16 +58,12 @@ function geocodeAddress(geocoder, resultsMap) {
 	
 // });
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
-	initMap();
-	geocodeAddress();
-
-}
-
-);
-
-
+// 	$('a').on('click', function(e){
+// 		console.log("you clicked me");
+// 	})
+// });
 
 
 
@@ -135,6 +96,10 @@ $(document).ready(function(){
 // http://en.marnoto.com/2015/06/aprende-google-maps-geocoding-exemplos.html
 // http://www.wikihow.com/Geocode-an-Address-in-Google-Maps-Javascript
 //https://hpneo.github.io/gmaps/examples/geocoding.html
+//explains what comes back from the response -- revese is entering Lon and Lat
+//https://youtu.be/pRiQeo17u6c
+//https://github.com/mzabriskie/axios for use with Postman account 
+
 
 
 //API Google maps JS API
