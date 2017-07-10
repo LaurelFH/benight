@@ -1,19 +1,16 @@
- <!-- Added link to the jQuery Library -->
+ <<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>test for night out</title>
+<!-- Added link to the jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!--style-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
-    <!--font link-->
-    <link href="https://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
-     <!-- Link to Moment.js should go here -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
-    <!-- Compiled and minified CSS 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">-->
-  <!-- Compiled and minified JavaScript 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>-->
-          
-</head>
+    <!--link to google maps API-->
+ <script async defer src="http://maps.googleapis.com/maps?file=api&amp;v=2&amp;key=AIzaSyDmZyph_0mPWdXM8yXSLT669Z_G3lttS_U"></script>
+ 
+ </head>
 <body>
   <div class="jumbotron">
   <h1>Night Out</h1>
@@ -25,36 +22,23 @@
   <div class="panel-heading">Pick an Event</div>
   <div class="panel-body">
  <div id="eventButton">   
-<button type="button" class="btn btn-outline-primary btn-lg">Location</button>
-<button type="button" class="btn btn-outline-secondary btn-lg">Resturants</button>
-<button type="button" class="btn btn-outline-success btn-lg">Clubs</button>
-<button type="button" class="btn btn-outline-info btn-lg">Concerts</button>
-<button type="button" class="btn btn-outline-warning btn-lg">Friends</button>
 <button type="button" id="weatherButton" class="btn btn-outline-danger btn-lg">Weather</button>
  </div>
- <!--form in which the user inputs their locaition-->
-<div id="cityInputForm">
-<form>
+ <!--form in which the user inputs their location-->
+<div id="cityInput">
 <!--space where user enters their location-->
     <input type="text" id="cityInput">
-    <button class="btn btn-outline-danger btn-lg" type="submit">Set City</button>
-</form>
+    <button class="btn btn-danger" type="submit">Set City</button>
 </div>
 <div id="preferredCity"></div>
 <div id="weather"></div>
- <br>
- <br>
-<div id="yelpDateNightInputForm">
-<button type="button" class="btn btn-outline-primary btn-lg">Date Night</button>
-</div>
-<br><br>
- <div id="yelpInputForm">
-<button type="button" class="btn btn-outline-primary btn-lg">Girl's Night Out</button>
-</div>
+
+
 <br><br>
 <!--empty div for the map-->
-<div id=mapspace>
+<div id="mapspace" style="width:900px; height: 580px;">
 </div>
+
 <!--no need for this panel now-->
   <!--  <div class="omb_logout">
     <button id="signOut" class="btn btn-lg btn-primary btn-block">Sign Out</button>         
@@ -139,7 +123,7 @@
 </script>
 
  <!--javascript   -->
-    <script src="assets/javascript/javascript.js" type="text/javascript"></script>
+    <script src="javascript.js" type="text/javascript"></script>
      
 </body>
 </html>
