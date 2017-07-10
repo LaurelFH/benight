@@ -2,7 +2,19 @@
  <html lang="en">
  <head>
      <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>map test for night out</title>
+     <style>
+        #map{
+            height:400px;
+            /*percent of the container*/
+            width:100%;
+
+
+        }
+
+
+     </style>
 <!-- Added link to the jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- Added a link to Bootstrap-->
@@ -14,6 +26,34 @@
  <script async defer src="http://maps.googleapis.com/maps?file=api&amp;v=2&amp;key=AIzaSyDmZyph_0mPWdXM8yXSLT669Z_G3lttS_U"></script>
   </head>
 <body>
+<div id="map"></div>
+<!--has a parameter with callback of initmap choice-->
+<!--hardcoding the lat and lng but can change later to take the value from the input box-->
+<script>
+    function initMap(){
+        //give options for the map, zoom level, where it is supposed to be centered when the user views it too, etc.
+        var options = {
+            //scale of 1(closest)-14 (farthest)
+            zoom: 8,
+            center: {lat:42.3601, lng:-71.0589}
+        }
+
+    //have to create the map object next, tkaes 2 parameters here,  also has to be styled or we won't see anything when it loads!!!!
+    var map = new google.maps.Map(document.getElementById('map'), options);
+    //add a marker, it also takes in a parameter in this case 
+    var marker = new google.maps.Marker({
+        position:{lat: 42.4668, lng:70.9495}
+
+
+    });
+
+
+    }
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmZyph_0mPWdXM8yXSLT669Z_G3lttS_U&callback=initMap">
+    </script>
+
   <div class="jumbotron">
   <h1>Night Out</h1>
   <p id="slogan">Let's have fun!</p>
@@ -38,76 +78,19 @@
 
 <br><br>
 <div id="allMapInfo">
+<h2 id="text-center">Enter Location: </h2>
+<form id="location-form">
+    <input type="text" id="location-input" class="form-control form-control-lg" placeholder="Enter Your City, State">
+    <br>
+    <button type="submit" class="btn btn-primary btn-block" >Submit</button>
+    </form>
 <!--empty div for the map-->
-    <div class="well" id="mapSpace" style="width:900px; height: 580px;">
+    <div class="well" id="mapSpace">
     </div>
     <div class="well" id="address-components"></div>
     <div id="geometryInfo"></div>
 </div><!--ends all map info div-->
-<script>
-//call geocode
-geocode();
 
-    function geocode(){
-        var location = '22 Main st Boston MA';
-        axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {
-            params:{
-                address: location, 
-                key:'AIzaSyDmZyph_0mPWdXM8yXSLT669Z_G3lttS_U'
-            }
-
-        })
-        .then(function(response){
-            //logging the full response
-            console.log(response);
-
-            //formatting the address from the data object, then dive into array for a single object
-            console.log(response.data.results[0].formatted_address);
-            var formattedAddress = response.data.results[0].formatted_address;
-            //can use back ticks to great a templatte with multiple lines!!!
-            var formattedAddressOutput = `
-                <ul class="list-group">
-                <li class="list-group-item">${formattedAddress}</li>
-                </ul>
-
-            `;
-
-
-
-
-
-
-            //address components 
-            var addressComponents = response.data.results[0].address_components;
-            //loop through that array to get the rest of the address info 
-            var addressComponentsOutput = '<ul class="list-group">';
-            for(var i = 0; i < addressComponents.length; i++){
-                //have to add to output variable; also add to template, ${} is just a variable/selector 
-                addressComponentsOutput += `
-                <li class="list-group-item"><strong>${addressComponents[i].types[0]}</strong>:${addressComponents[i].long_name}</li>
-                `;
-            }
-            addressComponentsOutput += '</ul>';
-            //geometry Info
-            var lat = response.data.results[0].geometry.location.lat;
-            var lng = response.data.results[0].geometry.location.lng;
-            var geometryOutput = `<li class="list-group-item"><strong>Latitude</strong>:${lat}</li>
-            <li class="list-group-item"><strong>Longitude</strong>:${lng}</li>
-
-            `;
-
-            //output to the mapSpace, address-components,  div
-            document.getElementById('mapSpace').innerHTML = formattedAddressOutput;
-            document.getElementById('address-components').innerHTML = addressComponentsOutput;
-            document.getElementById('geometryInfo').innerHTML = geometryOutput;
-
-        })
-        .catch(function(error){
-            console.log("error!!!");
-        });
-
-        }
-</script>
 <!--<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>-->
 <!--<script>
   // Initialize Firebase

@@ -14,7 +14,71 @@
 
 // GOOGLE MAPS GEOCODE-- 
 //AIzaSyDmZyph_0mPWdXM8yXSLT669Z_G3lttS_U
+//call geocode after the form!!!
+//geocode();
 
+//get location form
+var locationForm = document.getElementById('location-form');
+
+//listen for the submit here 
+locationForm.addEventListener('submit', geocode);
+
+    function geocode(event){
+        //prevent actual submit
+        event.preventDefault();
+        var location = document.getElementById('location-input').value;
+        axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {
+            params:{
+                address: location, 
+                key:'AIzaSyDmZyph_0mPWdXM8yXSLT669Z_G3lttS_U'
+            }
+
+        })
+        .then(function(response){
+            //logging the full response
+            console.log(response);
+
+            //formatting the address from the data object, then dive into array for a single object
+            console.log(response.data.results[0].formatted_address);
+            var formattedAddress = response.data.results[0].formatted_address;
+            //can use back ticks to great a templatte with multiple lines!!!
+            var formattedAddressOutput = `
+                <ul class="list-group">
+                <li class="list-group-item">${formattedAddress}</li>
+                </ul>
+
+            `;
+
+            //address components 
+            var addressComponents = response.data.results[0].address_components;
+            //loop through that array to get the rest of the address info 
+            var addressComponentsOutput = '<ul class="list-group">';
+            for(var i = 0; i < addressComponents.length; i++){
+                //have to add to output variable; also add to template, ${} is just a variable/selector 
+                addressComponentsOutput += `
+                <li class="list-group-item"><strong>${addressComponents[i].types[0]}</strong>:${addressComponents[i].long_name}</li>
+                `;
+            }
+            addressComponentsOutput += '</ul>';
+            //geometry Info
+            var lat = response.data.results[0].geometry.location.lat;
+            var lng = response.data.results[0].geometry.location.lng;
+            var geometryOutput = `<li class="list-group-item"><strong>Latitude</strong>:${lat}</li>
+            <li class="list-group-item"><strong>Longitude</strong>:${lng}</li>
+
+            `;
+
+            //output to the mapSpace, address-components,  div
+            document.getElementById('mapSpace').innerHTML = formattedAddressOutput;
+            document.getElementById('address-components').innerHTML = addressComponentsOutput;
+            document.getElementById('geometryInfo').innerHTML = geometryOutput;
+
+        })
+        .catch(function(error){
+            console.log("error!!!");
+        });
+
+        }
 
 
 
@@ -69,8 +133,8 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
-//TASKS TO FINISH
-
+//TASKS TO FINISH OR QUESTIONS FOR THE GROUP
+//1.  What is supposed to be displayed via map?  The city or the location of an actual event etc.? 
 
 
 
@@ -99,7 +163,7 @@
 //explains what comes back from the response -- revese is entering Lon and Lat
 //https://youtu.be/pRiQeo17u6c
 //https://github.com/mzabriskie/axios for use with Postman account 
-
+//https://www.youtube.com/watch?v=Zxf1mnP5zcw
 
 
 //API Google maps JS API
