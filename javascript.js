@@ -66,7 +66,6 @@ locationForm.addEventListener('submit', geocode);
             var lng = response.data.results[0].geometry.location.lng;
             var geometryOutput = `<li class="list-group-item"><strong>Latitude</strong>:${lat}</li>
             <li class="list-group-item"><strong>Longitude</strong>:${lng}</li>
-
             `;
 
             //output to the mapSpace, address-components,  div
