@@ -12,7 +12,6 @@
 
         }
 
-
      </style>
 <!-- Added link to the jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -26,94 +25,7 @@
   </head>
 <body>
 <div id="map"></div>
-<!--has a parameter with callback of initmap choice-->
-<script>
-    function initMap(){
-        //give options for the map, zoom level, where it is supposed to be centered when the user views it too, etc.
-        //hardcoding the lat and lng but can change later to take the value from the input box
-        var options = {
-            //scale of 1(far)-14 (close?)
-            zoom: 15,
-            //be sure to put the -for lng, otherwise it puts UNC in Afganistan 
-            center: {lat:35.9132, lng:-79.0558}
-        }
 
-    //have to create the map object next, tkaes 2 parameters here,  also has to be styled or we won't see anything when it loads!!!!
-    var map = new google.maps.Map(document.getElementById('map'), options);
-        
-    // //add a SINGLE marker, it also takes in a parameter in this case 
-    // var marker = new google.maps.Marker({
-    //     position:{lat:35.9049,lng:-79.0469},
-    //     //need a value here (the map created above)
-    //     map:map,
-    //     //set up url to get to a custom icon?
-    //     // icon: 'https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Food-Dome-512.png'
-    // });
-    // //can pop up text/content info-- neds a listener too
-    // var infoWindow = new google.maps.InfoWindow({
-    //     content:'<h1>UNC Chapel Hill NC</h1>'
-
-    // });
-    // marker.addListner('click',function(){
-    //     infoWindow.open(map, marker); 
-    // });
-
-
-    //potential for making coords object (useful if we want to add different types of markers)
-    //THIS IS A TEST-- DON'T CALL THESE 3 TIMES LIKE THIS IN FINAL VERSION!!!
-    //UNC coords
-    addMarker({
-        coords:{lat:35.9049,lng:-79.0469}, 
-        // iconImage:'https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Food-Dome-512.png'
-        content:'<h1>UNC</h1>'
-    });
-    //sup dogs coords
-    addMarker({
-        coords:{lat:35.9136, lng:-79.0555},
-        // iconImage:'https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Food-Dome-512.png'
-        content: '<h1>Sup Dogs</h1>'
-    });
-    //top of the hill coords
-    addMarker({
-        coords:{lat:35.9130, lng:-79.0553},
-        // iconImage:'https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Food-Dome-512.png'
-        content:'<h1>Top of the Hill</h1>'
-    });
-    //create a function called addMarker so we can add markers dynamically
-    function addMarker(coords){
-        var marker = new google.maps.Marker({
-            //te props makes it a property  with the coords obj
-        position:props.coords,
-        //need a value here (the map created above)
-        map:map,
-        //set up url to get to a custom icon? and adds it as a property
-        // icon: 'https://cdn0.iconfinder.com/data/icons/kameleon-free-pack-rounded/110/Food-Dome-512.png'
-        // icon: props.iconImage
-        });
-
-        //test to see if a parameter for a custom icon is there
-        // if(props.iconImage){
-        //     marker.setIcon(props.iconImage);
-
-        //     };
-
-        //check if content
-        if(props.content){
-                //can pop up text/content info-- neds a listener too
-            var infoWindow = new google.maps.InfoWindow({
-                content:props.content
-                 });
-
-            marker.addListner('click',function(){
-                infoWindow.open(map, marker); 
-                });
-
-            }
-
-        }
-
-    }
-</script>
 <!--link to google maps javascript api-->
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmZyph_0mPWdXM8yXSLT669Z_G3lttS_U&callback=initMap">
