@@ -230,7 +230,17 @@ locationForm.addEventListener('submit', geocode);
 // 	    console.log(response);
 // 
 ///////////////////////////////////////////////////////////////////////////////////////
+//
+// FOURSQUARE API 
+// 
+// https://www.youtube.com/watch?v=0TQoof_67_Q
+// 
+// 
+// 
+// 
+// 
 
+///////////////////////////////////////////
 //EVENTS AND CALLS 
 // $(document).ready(function(){
 // 	console.log("document is ready");
