@@ -234,12 +234,27 @@ locationForm.addEventListener('submit', geocode);
 // FOURSQUARE API 
 // 
 // https://www.youtube.com/watch?v=0TQoof_67_Q
-// 
-// 
-// 
-// 
-// 
-
+// https://vimeo.com/87793635
+//https://developer.foursquare.com/resources/libraries
+//http://praized.github.io/marelle/ 
+//https://www.programmableweb.com/library/foursquare-webshell-javascript-library
+// https://stackoverflow.com/questions/35026964/what-is-wrong-with-my-foursquare-api-call
+// https://stackoverflow.com/questions/8945377/whats-the-best-way-to-tune-my-foursquare-api-search-queries
+// https://developer.foursquare.com/start/search
+//https://www.schoolofhaskell.com/school/to-infinity-and-beyond/pick-of-the-week/foursquare-api-example 
+//
+//can link to geocoding from google maps api!!!
+//https://www.schoolofhaskell.com/school/to-infinity-and-beyond/pick-of-the-week/foursquare-api-example
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 ///////////////////////////////////////////
 //EVENTS AND CALLS 
 // $(document).ready(function(){
