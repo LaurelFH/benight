@@ -1,9 +1,13 @@
        //example call from SO 
         /**********FourSquare***************/
+
+       var CLIENT_ID = "PCF5FZ1ZQSULICPVC1L5SKVMMPY1ELIUV12AZOWP20LX5G31";
+       var CLIENT_SECRET = "SLUV4VW3E2QYXZ44CCDBZDXAVDFRMDHVW4SQQB0ISQO5Y42Y";
+
     $.ajax({
         url:'https://api.foursquare.com/v2/venues/search',
         dataType: 'json',
-        data: 'limit=1' +
+        data: 'limit=10' +
                 '&ll='+ placeItem.lat() +','+ placeItem.lng() +
                 '&?client_id='+ CLIENT_ID +
                 '&client_secret='+ CLIENT_SECRET +
